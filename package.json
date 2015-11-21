@@ -1,0 +1,23 @@
+{
+  "name": "react-workshop-day1",
+  "version": "1.0.0",
+  "description": "React.js workshop. Self contained, one-day workshop covering the basics.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/prpatel/react-workshop-day1.git"
+  },
+  "keywords": [
+    "javascript",
+    "react.js"
+  ],
+  "author": "Pratik Patel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/prpatel/react-workshop-day1/issues"
+  },
+  "homepage": "https://github.com/prpatel/react-workshop-day1#readme"
+}
