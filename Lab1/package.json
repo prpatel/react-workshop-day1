@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "start": "webpack-dev-server",
+    "solution": "webpack-dev-server --config webpack.solution.config.js"
+  }
+}
