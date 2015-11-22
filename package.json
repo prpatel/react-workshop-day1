@@ -22,6 +22,7 @@
   "homepage": "https://github.com/prpatel/react-workshop-day1#readme",
   "dependencies": {
     "axios": "^0.7.0",
+    "lodash": "^3.10.1",
     "moment": "^2.10.6",
     "react": "^0.14.0",
     "react-bootstrap": "^0.28.1",
