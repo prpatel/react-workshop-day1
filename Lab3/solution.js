@@ -5,6 +5,7 @@ import Bootstrap from 'react-bootstrap';
 import Jumbotron from 'react-bootstrap/lib/Jumbotron';
 var Button = require('react-bootstrap').Button;
 import Panel from 'react-bootstrap/lib/Panel'
+
 class HelloWorld extends React.Component {
   render() {
     var now = new Date();

@@ -3,10 +3,8 @@ import ReactDOM from 'react-dom';
 import moment from 'moment'
 import Bootstrap from 'react-bootstrap';
 import Jumbotron from 'react-bootstrap/lib/Jumbotron';
-var Button = require('react-bootstrap').Button;
 import Panel from 'react-bootstrap/lib/Panel'
 import Input from 'react-bootstrap/lib/Input'
-import ButtonInput from 'react-bootstrap/lib/ButtonInput'
 import Label from 'react-bootstrap/lib/Label'
 
 class LunchApp extends React.Component {
@@ -16,7 +14,7 @@ class LunchApp extends React.Component {
     return (
       <div>
         <Panel>
-          <h2>Options for lunch for {formattedDate}</h2>
+          <h2>Options for lunch for {formattedDate}:</h2>
           <LunchOptionsPanel lunchData={this.props.lunchChoices}> </LunchOptionsPanel>
         </Panel>
       </div>
@@ -25,16 +23,43 @@ class LunchApp extends React.Component {
 }
 
 class LunchOptionsPanel extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {selectedLunch: 'Nothing selected'};
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick(event) {
+    // may need to use innerText for older IE
+    this.setState({
+      selectedLunch: event.target.textContent
+    });
+  }
   render() {
+    let clickHandler = this.handleClick;
     let lunchOptions = this.props.lunchData.map(function(c,i) {
-      return <h3 key={i}><Label>{c}</Label></h3>
+      return <h3 key={i} onClick={clickHandler}><Label>{c}</Label></h3>
     });
     return (
       <div>
         <Panel header="Please select one" bsStyle="info">
           {lunchOptions}
         </Panel>
+        <SelectedLunchPanel  selectedLunch={this.state.selectedLunch}></SelectedLunchPanel>
+      </div>
+    );
+  }
+}
 
+class SelectedLunchPanel extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <Panel header="You've picked" bsStyle="warning">
+          {this.props.selectedLunch}
+        </Panel>
       </div>
     );
   }
