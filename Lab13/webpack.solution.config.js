@@ -14,7 +14,13 @@ module.exports = {
     hot: false,
     inline: true,
     progress: false,
-    noInfo: false
+    noInfo: false,
+    proxy: {
+            '/lunches': {
+                target: 'http://connect-js.com:3000/',
+                secure: false,
+            }
+          }
   },
   debug: true,
   eslint: {
@@ -23,7 +29,7 @@ module.exports = {
 
   // devtool: 'inline-source-map',
   devtool: 'eval-source-map',
-  module: {    
+  module: {
     loaders: [
       {
         test: /\.js/,

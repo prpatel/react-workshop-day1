@@ -1,0 +1,16 @@
+{
+  "parser": "babel-eslint",
+  "ecmaFeatures": {
+    "classes": false
+  },
+  "env": {
+    "node": true,
+    "browser" : true
+  },
+  "rules": {
+    "eol-last": 2,
+    "quotes": [2, "single"],
+    "semi": 1,
+    "strict": 1
+  }
+}

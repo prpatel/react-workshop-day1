@@ -2,7 +2,7 @@ var path = require('path');
 
 module.exports = {
   entry: {
-    app: ['./solution.js']
+    app: ['./app.js']
   },
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -13,17 +13,15 @@ module.exports = {
     historyApiFallback: true,
     hot: false,
     inline: true,
-    progress: false,
-    noInfo: false
+    progress: true,
+    proxy: {
+            '/lunches': {
+                target: 'http://connect-js.com:3000/',
+                secure: false,
+            }
+          }
   },
-  debug: true,
-  eslint: {
-    emitError: true
-  },
-
-  // devtool: 'inline-source-map',
-  devtool: 'eval-source-map',
-  module: {    
+  module: {
     loaders: [
       {
         test: /\.js/,
@@ -31,8 +29,7 @@ module.exports = {
         loaders: [
           'babel-loader?optional[]=runtime&stage=0'
         ]
-      },
-      {test: /\.js$/, loader: "eslint-loader", exclude: /node_modules/}
+      }
     ]
   }
 };

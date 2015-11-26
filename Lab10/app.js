@@ -6,7 +6,7 @@ import Jumbotron from 'react-bootstrap/lib/Jumbotron';
 import Panel from 'react-bootstrap/lib/Panel';
 import Input from 'react-bootstrap/lib/Input';
 import Label from 'react-bootstrap/lib/Label';
-import ReactTransitionGroup from 'react/lib/ReactCSSTransitionGroup.js';
+import Button from 'react-bootstrap/lib/Button';
 
 class LunchApp extends React.Component {
   render() {
@@ -45,7 +45,6 @@ class LunchOptionsPanel extends React.Component {
         <Panel header="Please select one" bsStyle="info">
           {lunchOptions}
         </Panel>
-
         <SelectedLunchPanel  selectedLunch={this.state.selectedLunch}></SelectedLunchPanel>
       </div>
     );
@@ -55,17 +54,47 @@ class LunchOptionsPanel extends React.Component {
 class SelectedLunchPanel extends React.Component {
   constructor(props) {
     super(props);
+    this.updateInstructions = this.updateInstructions.bind(this);
+    this.state = { instructions: '' };
+  }
+  // fix me: Listen for a change from a dispatcher
+  // fix me: fire updateInstructions with the new data
+  updateInstructions(instructions) {
+    this.setState({instructions: instructions});
   }
   render() {
-    var selectLunchMarkup = <Label key={this.props.selectedLunch}>{this.props.selectedLunch}</Label>;
     return (
       <div>
         <Panel header="You've picked" bsStyle="warning">
-          <ReactTransitionGroup transitionName="example">
-            {selectLunchMarkup}
-          </ReactTransitionGroup>
-
+          <Label>{this.props.selectedLunch}</Label>
+          <p>Special Instructions: {this.state.instructions}</p>
+          <SpecialInstructionsInput
+            value={this.state.instructions}
+            updateInstructions={this.updateInstructions}
+            />
         </Panel>
+      </div>
+    );
+  }
+}
+
+class SpecialInstructionsInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange() {
+    // fix me
+  }
+  render() {
+    return (
+      <div>
+        <Label>Enter special instructions:</Label>
+      <input
+        ref='specialInstructionsInput'
+        type='text'
+         />
+       <Button onClick={this.handleChange}>Submit</Button>
       </div>
     );
   }
